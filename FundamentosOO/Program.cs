@@ -1,5 +1,6 @@
 ﻿using FundamentosOO;
 using System.Data;
+using System.Runtime.CompilerServices;
 
 internal class Program
 {
@@ -127,19 +128,43 @@ internal class Program
         //        //Chamando o Metodo do Objeto
         //        animal1.emitirSom();
         //    }
-        Gato gato1 = new Gato();
-        gato1.Nome = "Roberto";
-        Console.WriteLine(gato1.Nome + " Faz: ");
-        gato1.emitirSom();
-        Console.WriteLine("=========================================================");
-        Porco porco = new Porco();
-        porco.Nome = "Hilario";
-        Console.WriteLine(porco.Nome + " Faz: ");
-        porco.emitirSom();
-        Console.WriteLine("=========================================================");
-        Galinha galinha = new Galinha();
-        galinha.Nome = "Filomena";
-        Console.WriteLine(galinha.Nome + " Faz: ");
-        galinha.emitirSom();
+        //Gato gato1 = new Gato();
+        //gato1.Nome = "Roberto";
+        //Console.WriteLine(gato1.Nome + " Faz: ");
+        //gato1.emitirSom();
+        //Console.WriteLine("=========================================================");
+        //Porco porco = new Porco();
+        //porco.Nome = "Hilario";
+        //Console.WriteLine(porco.Nome + " Faz: ");
+        //porco.emitirSom();
+        //Console.WriteLine("=========================================================");
+        //Galinha galinha = new Galinha();
+        //galinha.Nome = "Filomena";
+        //Console.WriteLine(galinha.Nome + " Faz: ");
+        //galinha.emitirSom();
+        Mago mago = new Mago();
+        mago.Nome = "Patolino";
+        mago.Forca = 10;
+        mago.Inteligencia = 80;
+        mago.Vida = 200;
+        mago.Agilidade = 55;
+        mago.Nivel = 1;
+
+        Cavaleiro cava = new Cavaleiro();
+        cava.Nome = "Link";
+        cava.Forca = 80;
+        cava.Inteligencia = 20;
+        cava.Vida = 200;
+        cava.Agilidade = 55;
+        cava.Nivel = 1;
+
+
+
+
+
+
+
+
+
     }
 }

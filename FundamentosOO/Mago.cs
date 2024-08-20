@@ -6,25 +6,14 @@ using System.Threading.Tasks;
 
 namespace FundamentosOO
 {
-    public class Personagem
+    public class Mago : Personagem
     {
-        public string Nome { get; set; }
-        public int Nivel { get; set; }
-        public int Forca { get; set; }
-        public int Agilidade { get; set; }
-        public int Inteligencia { get; set; }
-        public int Vida { get; set; }
-        public int ArmaForc { get; set; }
 
-        public virtual void apresentarse()
+        public override void apresentarse()
         {
+            Console.WriteLine("Olá meu nome é " + this.Nome + " sou um grande mago e atualmente estou no nível " + this.Nivel);
         }
-        public virtual void evoluir()
-        {
-            Console.WriteLine(this.Nome + " evoluiiu para o Nível:" + this.Nivel + ". Todos seus atributos aumentaram");
-
-        }
-        public virtual int atacar()
+        public override int atacar()
         {
             int pontosAtaque = 0;
 
@@ -32,14 +21,7 @@ namespace FundamentosOO
 
             return pontosAtaque;
         }
-        public virtual int defender()
-        {
-            int pontosDefesa = 0;
 
-            pontosDefesa = (this.Forca + this.Agilidade + this.Inteligencia + this.Vida) / 4;
-
-            return pontosDefesa;
-        }
         public virtual void batalha(Personagem p)
         {
             this.apresentarse();
@@ -71,6 +53,7 @@ namespace FundamentosOO
                 Console.WriteLine(p.Nome + " acertou um ataque em " + this.Nome + " um dano de: " + danoDeVida2);
                 Console.WriteLine(this.Nome + " está com " + this.Vida + " pontos de HP;");
                 Console.WriteLine("=========================================================");
+
                 if (p.Vida <= 0)
                 {
                     vencedor = true;
@@ -97,5 +80,24 @@ namespace FundamentosOO
 
 
 
+
+
+        public override int defender()
+        {
+            int pontosDefesa = 0;
+
+            pontosDefesa = (this.Forca + this.Agilidade + this.Inteligencia + this.Vida) / 4;
+
+            return pontosDefesa;
+        }
+
+        public override void evoluir()
+        {
+            this.Nivel += 1;
+            this.Forca += 1;
+            this.Inteligencia += 1;
+            this.Agilidade += 1;
+            Console.WriteLine(this.Nome + " evoluiiu para o Nível:" + this.Nivel + ". Todos seus atributos aumentaram");
+        }
     }
 }
