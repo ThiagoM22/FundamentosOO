@@ -149,6 +149,9 @@ internal class Program
         mago.Vida = 200;
         mago.Agilidade = 55;
         mago.Nivel = 1;
+        mago.xp = 0;
+        mago.ArmaForc = 30;
+
 
         Cavaleiro cava = new Cavaleiro();
         cava.Nome = "Link";
@@ -157,6 +160,19 @@ internal class Program
         cava.Vida = 200;
         cava.Agilidade = 55;
         cava.Nivel = 1;
+        cava.xp = 0;
+        cava.ArmaForc = 35;
+
+        cava.batalha(mago);
+        cava.batalha(mago);
+
+        cava.batalha(mago);
+
+        cava.batalha(mago);
+
+        cava.batalha(mago);
+        Console.WriteLine(cava.xp);
+
 
 
 

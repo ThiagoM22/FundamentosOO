@@ -15,13 +15,22 @@ namespace FundamentosOO
         public int Inteligencia { get; set; }
         public int Vida { get; set; }
         public int ArmaForc { get; set; }
+        public int xp { get; set; }
 
         public virtual void apresentarse()
         {
         }
         public virtual void evoluir()
         {
-            Console.WriteLine(this.Nome + " evoluiiu para o Nível:" + this.Nivel + ". Todos seus atributos aumentaram");
+
+            if (this.xp >= 100)
+            {
+                this.Nivel += 1;
+                this.Forca += 1;
+                this.Inteligencia += 1;
+                this.Agilidade += 1;
+                Console.WriteLine(this.Nome + " evoluiiu para o Nível:" + this.Nivel + ". Todos seus atributos aumentaram");
+            }
 
         }
         public virtual int atacar()
@@ -36,14 +45,13 @@ namespace FundamentosOO
         {
             int pontosDefesa = 0;
 
-            pontosDefesa = (this.Forca + this.Agilidade + this.Inteligencia + this.Vida) / 4;
+            pontosDefesa = (this.Forca + this.Nivel + this.Inteligencia + this.Vida) / 4;
 
             return pontosDefesa;
         }
         public virtual void batalha(Personagem p)
         {
-            this.apresentarse();
-            p.apresentarse();
+
             bool vencedor = false;
             while (vencedor == false)
             {
@@ -82,17 +90,21 @@ namespace FundamentosOO
 
             }
             if (p.Vida <= 0)
-            {
-                p.Vida = 0;
-                Console.WriteLine(this.Nome + " venceu a luta");
-                this.evoluir();
-            }
-            else if (this.Vida <= 0)
-            {
-                this.Vida = 0;
-                Console.WriteLine(p.Nome + " venceu a luta");
-                p.evoluir();
-            }
+                if (p.Vida <= 0)
+                {
+                    p.Vida = 0;
+                    Console.WriteLine(this.Nome + " venceu a luta");
+                    this.xp += 30;
+                    this.evoluir();
+                }
+                else if (this.Vida <= 0)
+                {
+                    this.Vida = 0;
+                    Console.WriteLine(p.Nome + " venceu a luta");
+                    p.xp += 30;
+                    p.evoluir();
+
+                }
         }
 
 
