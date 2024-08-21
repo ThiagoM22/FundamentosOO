@@ -144,13 +144,13 @@ internal class Program
         //galinha.emitirSom();
         Mago mago = new Mago();
         mago.Nome = "Patolino";
-        mago.Forca = 10;
-        mago.Inteligencia = 80;
+        mago.Forca = 50;
+        mago.Inteligencia = 100;
         mago.Vida = 200;
         mago.Agilidade = 55;
         mago.Nivel = 1;
         mago.xp = 0;
-        mago.ArmaForc = 30;
+        mago.ArmaForc = 55;
 
 
         Cavaleiro cava = new Cavaleiro();
@@ -163,15 +163,40 @@ internal class Program
         cava.xp = 0;
         cava.ArmaForc = 35;
 
-        cava.batalha(mago);
-        cava.batalha(mago);
+        Elfo elfo = new Elfo();
+        elfo.Nome = "Lesgolas";
+        elfo.Forca = 90;
+        elfo.Inteligencia = 70;
+        elfo.Vida = 200;
+        elfo.Agilidade = 60;
+        elfo.xp = 0;
+        elfo.ArmaForc = 40;
 
+        Console.WriteLine(mago.atacar());
         cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        cava.batalha(mago);
+        mago.batalha(elfo);
 
-        cava.batalha(mago);
 
-        cava.batalha(mago);
-        Console.WriteLine(cava.xp);
+
+
 
 
 

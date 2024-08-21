@@ -9,6 +9,7 @@ namespace FundamentosOO
 {
     public class Mago : Personagem
     {
+        int contagemNivel = 1;
 
         public override void apresentarse()
         {
@@ -18,83 +19,10 @@ namespace FundamentosOO
         {
             int pontosAtaque = 0;
 
-            pontosAtaque = (this.ArmaForc + this.Agilidade + this.Inteligencia + this.Vida) / 4;
+            pontosAtaque = this.Inteligencia + this.ArmaForc;
 
             return pontosAtaque;
         }
-
-        public virtual void batalha(Personagem p)
-        {
-            this.apresentarse();
-            p.apresentarse();
-            bool vencedor = false;
-            while (vencedor == false)
-            {
-                int valorAtaque = this.atacar();
-                int valorDefesaInimigo = p.defender();
-                int danoDeVida = valorAtaque - valorDefesaInimigo;
-                if (danoDeVida <= 0)
-                {
-                    danoDeVida = 1;
-                }
-                p.Vida = p.Vida - danoDeVida;
-                Console.WriteLine(this.Nome + " acertou um ataque em " + p.Nome + " um dano de: " + danoDeVida);
-                Console.WriteLine(p.Nome + " está com " + p.Vida + " pontos de HP;");
-                Console.WriteLine("=========================================================");
-
-
-                int valorAtaqueInimigo = p.atacar();
-                int valorDefesa = this.defender();
-                int danoDeVida2 = valorAtaqueInimigo - valorDefesa;
-                if (danoDeVida2 <= 0)
-                {
-                    danoDeVida2 = 1;
-                }
-                this.Vida = this.Vida - danoDeVida2;
-                Console.WriteLine(p.Nome + " acertou um ataque em " + this.Nome + " um dano de: " + danoDeVida2);
-                Console.WriteLine(this.Nome + " está com " + this.Vida + " pontos de HP;");
-                Console.WriteLine("=========================================================");
-
-                if (p.Vida <= 0)
-                {
-                    vencedor = true;
-                }
-                else if (this.Vida <= 0)
-                {
-                    vencedor = true;
-                }
-
-            }
-            if (p.Vida <= 0)
-            {
-                this.evoluir();
-                p.Vida = 0;
-                Console.WriteLine(this.Nome + " venceu a luta");
-                this.xp += 30;
-            }
-            else if (this.Vida <= 0)
-            {
-                this.Vida = 0;
-                p.evoluir();
-                Console.WriteLine(p.Nome + " venceu a luta");
-                p.xp += 30;
-
-            }
-        }
-
-
-
-
-
-        public override int defender()
-        {
-            int pontosDefesa = 0;
-
-            pontosDefesa = (this.Forca + this.Nivel + this.Inteligencia + this.Vida) / 4;
-
-            return pontosDefesa;
-        }
-
         public override void evoluir()
         {
 
@@ -102,13 +30,25 @@ namespace FundamentosOO
             {
                 this.Nivel += 1;
                 this.Forca += 1;
-                this.Inteligencia += 1;
-                this.Agilidade += 1;
-                Console.WriteLine(this.Nome + " evoluiiu para o Nível:" + this.Nivel + ". Todos seus atributos aumentaram");
+                this.Inteligencia += 5;
+                this.Agilidade += 5;
+                this.xp = 0;
+                this.Vida = 200;
+                Console.WriteLine(this.Nome + " evoluiiu para o Nível:" + this.Nivel + ". Todos seus atributos aumentaram:\n Força: " + this.Forca + "\n Agilidade: " + this.Agilidade + "\n Inteligência: " + this.Inteligencia + "\n Vida: " + this.Vida + "\n");
+                Console.WriteLine("========================================================= \n");
+
+                contagemNivel++;
+
+            }
+            if (contagemNivel == 5)
+            {
+                this.ArmaForc += 10;
+                Console.WriteLine("Parece que sua arma evoluiu seu dano agora é de: " + this.ArmaForc);
+                contagemNivel = 0;
+
             }
 
+
         }
-
-
     }
 }
